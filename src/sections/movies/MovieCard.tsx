@@ -1,48 +1,75 @@
-import { Card, Box, Stack, Typography } from "@mui/material";
-import { movie } from "../../_mock/movies";
+import { useState } from "react";
+import { Card, Box, Typography } from "@mui/material";
+import { Movie } from "../../_mock/movies";
+import MovieDialog from "./MovieDialog";
 
 interface MovieCardProps {
-  movie: movie;
+  movie: Movie;
 }
 
 const MovieCard = ({ movie }: MovieCardProps) => {
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleCloseDialog = () => {
+    setOpen(false);
+  };
+
   return (
-    <Box>
-      <Card
-        sx={{
-          width: "240px",
-          height: "120px",
-          cursor: "pointer",
-          backgroundColor: "black",
-          marginBottom: "5px",
-          "&:hover": {
-            border: "3px solid white",
-          },
+    <>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
         }}
+        onClick={handleOpen}
       >
-        <Box
+        <Card
           sx={{
-            height: "100%",
-            position: "relative",
-            objectPosition: "center",
+            width: "240px",
+            height: "120px",
+            cursor: "pointer",
+            backgroundColor: "rgba(0, 0, 0, 0.7)",
+            marginBottom: "5px",
+            "&:hover": {
+              border: "3px solid white",
+            },
           }}
         >
-          <img
-            alt={movie.image}
-            src={`/assets/movies/${movie.image}.jpg`}
-            style={{ width: "100%", objectFit: "cover" }}
-          />
+          <Box
+            sx={{
+              height: "100%",
+              position: "relative",
+              objectPosition: "center",
+            }}
+          >
+            <img
+              alt={movie.image}
+              src={`/assets/movies/${movie.image}.jpg`}
+              style={{ width: "100%", objectFit: "cover" }}
+            />
+          </Box>
+        </Card>
+        <Box
+          sx={{
+            textAlign: "center",
+            width: "240px",
+          }}
+        >
+          <Typography sx={{ color: "white" }}>{movie.name}</Typography>
         </Box>
-      </Card>
-      <Box
-        sx={{
-          textAlign: "center",
-          width: "240px",
-        }}
-      >
-        <Typography sx={{ color: "white" }}>{movie.name}</Typography>
-      </Box>
-    </Box>
+      </div>
+      <MovieDialog
+        open={open}
+        handleClose={handleCloseDialog}
+        dataMovie={movie}
+      />
+    </>
   );
 };
 

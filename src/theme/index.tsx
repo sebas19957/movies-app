@@ -3,7 +3,7 @@ import { ThemeProvider } from "@emotion/react";
 import { CssBaseline } from "@mui/material";
 import { Theme } from "./Theme";
 
-export const AppTheme = ({
+const AppTheme = ({
   children,
 }: {
   children?: ReactElement | ReactElement[];
@@ -15,3 +15,5 @@ export const AppTheme = ({
     </ThemeProvider>
   );
 };
+
+export default AppTheme;

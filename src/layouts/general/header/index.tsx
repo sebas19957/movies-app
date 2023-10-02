@@ -1,27 +1,28 @@
-import { useState, useEffect } from "react";
+import { ChangeEvent } from "react";
 // @mui
 import { styled } from "@mui/material/styles";
 import {
   Box,
-  Stack,
   AppBar,
   Toolbar,
-  IconButton,
   Typography,
   Button,
+  TextField,
 } from "@mui/material";
-import TheatersIcon from "@mui/icons-material/Theaters";
 import LocalMoviesIcon from "@mui/icons-material/LocalMovies";
-import dayjs from "dayjs";
+import SearchIcon from "@mui/icons-material/Search";
+//
+import { useNavigate } from "react-router-dom";
+// import AddIcon from "@mui/icons-material/Add";
 // utils
 import { bgBlur } from "../../../utils/cssStyles";
 
-import styles from "./general.module.css";
+import styles from "./header.module.css";
 
 // ----------------------------------------------------------------------
 
 const StyledRoot = styled(AppBar)(({ theme }: { theme: any }) => ({
-  // ...(bgBlur({ color: theme.palette.background.default }) as any),
+  ...(bgBlur({ color: theme.palette.background.default }) as any),
   boxShadow: "none",
   backgroundColor: "transparent",
   textAlign: "center",
@@ -34,11 +35,17 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function Header() {
+  const navigate = useNavigate();
+
+  const handleChangeInput = (
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    console.log(event.target.value);
+  };
+
   return (
     <StyledRoot>
       <StyledToolbar>
-        {/*TODO: poner icono  */}
-
         <Box
           sx={{
             display: "flex",
@@ -46,12 +53,12 @@ export default function Header() {
             alignItems: "center",
             marginTop: "10px",
           }}
-          className={styles["tracking-in-contract-bck-bottom"]}
         >
           <Box
             sx={{
               display: "flex",
               alignItems: "center",
+              cursor: "pointer",
             }}
           >
             <Box
@@ -60,12 +67,13 @@ export default function Header() {
               alt="logo"
               width={40}
               height={40}
+              className={styles["text-flicker-in-glow"]}
             />
             <Typography
               variant="h4"
               sx={{
+                display: { xs: "none", sm: "none", md: "block" },
                 textAlign: "center",
-                fontFamily: "Carter One, cursive",
                 marginTop: "10px",
                 marginLeft: "10px",
                 fontSize: {
@@ -73,21 +81,43 @@ export default function Header() {
                   sm: "2rem",
                 },
               }}
+              onClick={() => navigate("/home")}
+              className={styles["text-flicker-in-glow"]}
             >
               Movies App
             </Typography>
           </Box>
+          <TextField
+            variant="outlined"
+            placeholder="Search movie"
+            sx={{
+              "& .MuiInputBase-root": {
+                backgroundColor: "rgba(255, 255, 255, 0.3)",
+                color: "white",
+              },
+            }}
+            size="small"
+            onChange={(e) => handleChangeInput(e)}
+            InputProps={{
+              startAdornment: (
+                <SearchIcon
+                  sx={{
+                    color: "white",
+                    marginLeft: "10px",
+                  }}
+                />
+              ),
+            }}
+          />
           <Button
             variant="contained"
             sx={{
-              backgroundColor: "red",
-              "&:hover": {
-                backgroundColor: "rgba(255, 0, 0, 0.5)",
-              },
+              display: { xs: "none", sm: "none", md: "flex" },
             }}
+            onClick={() => navigate("/create-movie")}
             startIcon={<LocalMoviesIcon />}
           >
-            Agregar
+            <Typography>Add movie</Typography>
           </Button>
         </Box>
       </StyledToolbar>

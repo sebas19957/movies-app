@@ -1,11 +1,11 @@
-export interface movie {
+export interface Movie {
   name: string;
   descripcion: string;
   image: string;
   movie_genre: string;
 }
 
-export const movies: movie[] = [
+export const movies: Movie[] = [
   {
     name: "Avengers: Endgame",
     descripcion:

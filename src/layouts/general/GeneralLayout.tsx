@@ -77,7 +77,7 @@ const GeneralLayout = () => {
           zIndex: 1,
         }}
       >
-        <Main style={{ height: "calc(100vh - 196px)" }}>
+        <Main style={{ height: "calc(100vh)" }}>
           <Outlet />
         </Main>
       </div>

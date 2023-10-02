@@ -5,7 +5,7 @@ import { grey } from "@mui/material/colors";
 export const Theme = createTheme({
   palette: {
     primary: {
-      main: "#DD9835",
+      main: "#FF0000",
       contrastText: "#FFF",
       100: "#FFC676",
       200: "#F1AE6C",
@@ -19,7 +19,7 @@ export const Theme = createTheme({
     },
   },
   typography: {
-    fontFamily: "Raleway",
+    fontFamily: "Carter One, cursive",
     h6: {
       fontWeight: 600,
     },
@@ -38,7 +38,7 @@ export const Theme = createTheme({
           textTransform: "inherit",
           outline: "none",
           fontWeight: "bold",
-          fontFamily: "Raleway",
+          fontFamily: "Carter One, cursive",
           "&.raleway": {
             fontWeight: "bold",
           },

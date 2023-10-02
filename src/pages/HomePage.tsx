@@ -1,76 +1,96 @@
-import { Typography, Box, Grid } from "@mui/material";
-import React from "react";
+import { Typography, Box } from "@mui/material";
 import { Helmet } from "react-helmet-async";
 import MovieList from "../sections/movies/MovieList";
-import Slider from "react-slick";
+
+import styles from "./pages.module.css";
 
 const HomePage = () => {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 5,
-    slidesToScroll: 4,
-  };
-
   return (
     <>
       <Helmet>
         <title> Movies-app | Peliculas </title>
       </Helmet>
-      <Box sx={{ padding: "15px", marginTop: "35%" }}>
-        {/* ---------------acción-------------- */}
+
+      <Typography
+        sx={{
+          color: "white",
+          fontSize: "22px",
+          fontWeight: "bold",
+          marginBottom: "10px",
+        }}
+      >
+        Search result
+      </Typography>
+
+      {/* //TODO: Implementar loading */}
+      {/* <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <span className={styles.loader}></span>
+        <span className={styles.loaderText}>Loading</span>
+      </div> */}
+      <div style={{ padding: "15px" }} className={styles["flip-in-hor-top"]}>
+        {/* ---------------action-------------- */}
         <Box sx={{ marginBottom: "15px" }}>
           <Typography
             sx={{
               color: "white",
               fontSize: "22px",
               fontWeight: "bold",
+              marginBottom: "10px",
             }}
           >
-            Acción
+            Action
           </Typography>
           <MovieList genre="accion" />
         </Box>
 
-        {/* ---------------ciencia_ficcion-------------- */}
+        {/* ---------------acience fiction -------------- */}
         <Box sx={{ marginBottom: "15px" }}>
           <Typography
             sx={{
               color: "white",
               fontSize: "22px",
               fontWeight: "bold",
+              marginBottom: "10px",
             }}
           >
-            Ciencia Ficción
+            Science Fiction
           </Typography>
           <MovieList genre="ciencia_ficcion" />
         </Box>
 
-        {/* ---------------comedia-------------- */}
+        {/* ---------------comedy-------------- */}
         <Box sx={{ marginBottom: "15px" }}>
           <Typography
             sx={{
               color: "white",
               fontSize: "22px",
               fontWeight: "bold",
+              marginBottom: "10px",
             }}
           >
-            Comedia
+            Comedy
           </Typography>
           <MovieList genre="comedia" />
         </Box>
 
-        {/* ---------------fantasia-------------- */}
+        {/* ---------------fantasy-------------- */}
         <Box sx={{ marginBottom: "15px" }}>
           <Typography
             sx={{
               color: "white",
               fontSize: "22px",
               fontWeight: "bold",
+              marginBottom: "10px",
             }}
           >
-            Fantasía
+            Fantasy
           </Typography>
           <MovieList genre="fantasia" />
         </Box>
@@ -82,6 +102,7 @@ const HomePage = () => {
               color: "white",
               fontSize: "22px",
               fontWeight: "bold",
+              marginBottom: "10px",
             }}
           >
             Romance
@@ -89,20 +110,21 @@ const HomePage = () => {
           <MovieList genre="romance" />
         </Box>
 
-        {/* ---------------terror-------------- */}
+        {/* ---------------horror-------------- */}
         <Box sx={{ marginBottom: "15px" }}>
           <Typography
             sx={{
               color: "white",
               fontSize: "22px",
               fontWeight: "bold",
+              marginBottom: "10px",
             }}
           >
-            Terror
+            Horror
           </Typography>
           <MovieList genre="terror" />
         </Box>
-      </Box>
+      </div>
     </>
   );
 };
