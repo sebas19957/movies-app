@@ -65,7 +65,7 @@ export default function Header() {
               variant="h4"
               sx={{
                 textAlign: "center",
-                fontFamily: "'Carter One', cursive",
+                fontFamily: "Carter One, cursive",
                 marginTop: "10px",
                 marginLeft: "10px",
                 fontSize: {
