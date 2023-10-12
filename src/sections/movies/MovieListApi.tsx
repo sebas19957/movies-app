@@ -63,8 +63,8 @@ const MovieListApi = ({ data }: MovieListApiProps) => {
 
   return (
     <Slider {...settings}>
-      {data.map((movie: Movie) => (
-        <MovieCard key={movie.image} movie={movie} />
+      {data.map((movie: Movie, index: number) => (
+        <MovieCard key={index} movie={movie} />
       ))}
     </Slider>
   );

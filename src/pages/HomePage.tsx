@@ -37,14 +37,6 @@ const HomePage = () => {
         const response = await getMovies();
 
         setApiMoviesData(response);
-
-        enqueueSnackbar(response?.message, {
-          anchorOrigin: {
-            vertical: "top",
-            horizontal: "right",
-          },
-          variant: response?.success ? "success" : "error",
-        });
       } catch (error: any) {
         console.log(error);
 
