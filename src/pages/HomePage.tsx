@@ -10,6 +10,7 @@ import { getMovies } from "../services/movies";
 import { Movie, movies } from "../_mock/movies";
 
 import styles from "./pages.module.css";
+import MovieListApi from "../sections/movies/MovieListApi";
 
 const HomePage = () => {
   const { enqueueSnackbar } = useSnackbar();
@@ -22,7 +23,7 @@ const HomePage = () => {
   const handleChangeInput = (event: any) => {
     setSearch(event.target.value);
     const filterMovies = movies.filter((movie: Movie) => {
-      return movie.name
+      return movie.title
         .toLowerCase()
         .includes(event.target.value.toLowerCase());
     });
@@ -34,6 +35,9 @@ const HomePage = () => {
       setLoading(true);
       try {
         const response = await getMovies();
+
+        setApiMoviesData(response);
+
         enqueueSnackbar(response?.message, {
           anchorOrigin: {
             vertical: "top",
@@ -119,12 +123,13 @@ const HomePage = () => {
             spacing={2}
             sx={{
               marginBottom: moviesData.length > 0 && search.length > 0 ? 20 : 0,
+              padding: "20px",
             }}
           >
             {moviesData.length > 0 &&
               search.length > 0 &&
               moviesData.map((movie: Movie, index: number) => (
-                <Grid key={index} item xs={12} md={2}>
+                <Grid key={index} item xs={12} sm={4} md={4}>
                   <MovieCard key={movie.image} movie={movie} />
                 </Grid>
               ))}
@@ -156,19 +161,19 @@ const HomePage = () => {
             className={styles["flip-in-hor-top"]}
           >
             {/* ---------------recientes-------------- */}
-            {/* <Box sx={{ marginBottom: "15px" }}>
-          <Typography
-            sx={{
-              color: "white",
-              fontSize: "22px",
-              fontWeight: "bold",
-              marginBottom: "10px",
-            }}
-          >
-            Recent additions
-          </Typography>
-          <MovieList genre="accion" />
-        </Box> */}
+            <Box sx={{ marginBottom: "15px" }}>
+              <Typography
+                sx={{
+                  color: "white",
+                  fontSize: "22px",
+                  fontWeight: "bold",
+                  marginBottom: "10px",
+                }}
+              >
+                Recent additions
+              </Typography>
+              <MovieListApi data={apiMoviesData} />
+            </Box>
             {/* ---------------action-------------- */}
             <Box sx={{ marginBottom: "15px" }}>
               <Typography

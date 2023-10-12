@@ -50,7 +50,11 @@ const MovieCard = ({ movie }: MovieCardProps) => {
           >
             <img
               alt={movie.image}
-              src={`/assets/movies/${movie.image}.jpg`}
+              src={
+                movie.image
+                  ? `/assets/movies/${movie.image}.jpg`
+                  : `/assets/images/no_image.jpg`
+              }
               style={{ width: "100%", objectFit: "cover" }}
             />
           </Box>
@@ -61,7 +65,7 @@ const MovieCard = ({ movie }: MovieCardProps) => {
             width: "240px",
           }}
         >
-          <Typography sx={{ color: "white" }}>{movie.name}</Typography>
+          <Typography sx={{ color: "white" }}>{movie.title}</Typography>
         </Box>
       </div>
       <MovieDialog

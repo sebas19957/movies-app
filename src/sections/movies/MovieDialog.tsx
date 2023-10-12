@@ -67,7 +67,7 @@ const MovieDialog = ({ open, handleClose, dataMovie }: MovieDialogProps) => {
       >
         <Grid container justifyContent="center">
           <Typography variant="h5" sx={{ color: "red" }}>
-            {dataMovie.name}
+            {dataMovie.title}
           </Typography>
         </Grid>
       </DialogTitle>
@@ -79,7 +79,7 @@ const MovieDialog = ({ open, handleClose, dataMovie }: MovieDialogProps) => {
         }}
       >
         <Typography sx={{ color: "white", zIndex: 1 }}>
-          {dataMovie.descripcion}
+          {dataMovie.overview}
         </Typography>
       </DialogContent>
       <DialogActions

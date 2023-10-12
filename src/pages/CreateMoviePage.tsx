@@ -45,13 +45,16 @@ const CreateMoviePage = () => {
       } catch (error: any) {
         console.log(error);
 
-        enqueueSnackbar(error?.response?.data?.message, {
-          anchorOrigin: {
-            vertical: "top",
-            horizontal: "right",
-          },
-          variant: "error",
-        });
+        enqueueSnackbar(
+          error?.response?.data?.message ?? "Internal Server Error",
+          {
+            anchorOrigin: {
+              vertical: "top",
+              horizontal: "right",
+            },
+            variant: "error",
+          }
+        );
       } finally {
         setLoading(false);
       }
