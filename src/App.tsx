@@ -8,19 +8,16 @@ import "slick-carousel/slick/slick-theme.css";
 // styles
 import "./App.css";
 import AppTheme from "./theme";
-import { SearchProvider } from "./contexts/SearchContext";
 
 function App() {
   return (
     <HelmetProvider>
-      <SearchProvider>
-        <BrowserRouter>
-          <AppTheme>
-            {/* <ScrollToTop /> */}
-            <Router />
-          </AppTheme>
-        </BrowserRouter>
-      </SearchProvider>
+      <BrowserRouter>
+        <AppTheme>
+          {/* <ScrollToTop /> */}
+          <Router />
+        </AppTheme>
+      </BrowserRouter>
     </HelmetProvider>
   );
 }

@@ -14,7 +14,7 @@ code {
 
 /* Cambiar el color de la barra de desplazamiento */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 12px;
 }
 
 ::-webkit-scrollbar-track {
@@ -24,4 +24,13 @@ code {
 ::-webkit-scrollbar-thumb {
   background-color: #ff0000;
   border-radius: 20px;
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 600px) {
+  /* Ocultar el scroll */
+  ::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
 }

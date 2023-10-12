@@ -37,52 +37,68 @@ const MovieDialog = ({ open, handleClose, dataMovie }: MovieDialogProps) => {
       maxWidth="sm"
       fullWidth
       sx={{
-        width: "100%",
         "& .MuiDialog-paperWidthSm": {
           borderRadius: "15px",
-          backgroundColor: "black",
           backgroundImage: `url(/assets/movies/${dataMovie.image}.jpg)`,
-          backgroundSize: "contain",
-          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
           backgroundPosition: "center",
-          height: "340px",
         },
       }}
     >
+      {/* <div
+        style={{
+          backgroundColor: "#000000",
+          opacity: 0.8,
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          zIndex: 0,
+        }}
+      /> */}
       <DialogTitle
         sx={{
           justifyContent: "ceter",
           width: "100%",
+          backgroundColor: "rgba(0,0,0,0.9)",
+          opacity: 0.8,
         }}
       >
         <Grid container justifyContent="center">
-          <Typography variant="h5">{dataMovie.name}</Typography>
+          <Typography variant="h5" sx={{ color: "red" }}>
+            {dataMovie.name}
+          </Typography>
         </Grid>
       </DialogTitle>
-      <DialogContent>
-        <Typography>{dataMovie.descripcion}</Typography>
+      <DialogContent
+        sx={{
+          height: "200px",
+          backgroundColor: "rgba(0,0,0,0.9)",
+          opacity: 0.8,
+        }}
+      >
+        <Typography sx={{ color: "white", zIndex: 1 }}>
+          {dataMovie.descripcion}
+        </Typography>
       </DialogContent>
-      <DialogActions sx={{ justifyContent: "center", mb: 2 }}>
-        <Button variant="contained" color="inherit" onClick={handleClose}>
-          Cerrar
-        </Button>
-        {/* <Button
+      <DialogActions
+        sx={{
+          justifyContent: "center",
+          backgroundColor: "rgba(0,0,0,0.9)",
+          opacity: 0.8,
+        }}
+      >
+        <Button
           variant="contained"
-          color="primary"
-          disabled={loading}
-          onClick={handleRenewToken}
-          endIcon={
-            loading && (
-              <CircularProgress
-                sx={{ color: "#767676" }}
-                thickness={5}
-                size={20}
-              />
-            )
+          color="inherit"
+          onClick={handleClose}
+          startIcon={
+            <img src="/assets/icons/close-bg.png" alt="title" width={24} />
           }
         >
-          {loading ? "Guardando..." : "Extender Sesión"}
-        </Button> */}
+          Cerrar
+        </Button>
       </DialogActions>
     </Dialog>
   );

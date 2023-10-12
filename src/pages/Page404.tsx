@@ -23,7 +23,7 @@ const Page404 = () => {
           top: 0,
           left: 0,
           width: "100%",
-          height: "100%",
+          height: "100vh",
         }}
       >
         <div
@@ -49,7 +49,7 @@ const Page404 = () => {
             variant="h2"
             sx={{
               color: "white",
-              marginTop: { xs: "-180px", sm: "-50px" },
+              marginTop: { xs: "-160px", sm: "-50px" },
               fontSize: { xs: "40px", sm: "50px" },
             }}
           >

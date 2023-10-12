@@ -1,16 +1,7 @@
-import { ChangeEvent } from "react";
 // @mui
 import { styled } from "@mui/material/styles";
-import {
-  Box,
-  AppBar,
-  Toolbar,
-  Typography,
-  Button,
-  TextField,
-} from "@mui/material";
-import LocalMoviesIcon from "@mui/icons-material/LocalMovies";
-import SearchIcon from "@mui/icons-material/Search";
+import { Box, AppBar, Toolbar, Typography, Button } from "@mui/material";
+
 //
 import { useNavigate } from "react-router-dom";
 // import AddIcon from "@mui/icons-material/Add";
@@ -21,11 +12,18 @@ import styles from "./header.module.css";
 
 // ----------------------------------------------------------------------
 
-const StyledRoot = styled(AppBar)(({ theme }: { theme: any }) => ({
+const StyledRoot = styled(AppBar)(({ theme }) => ({
   ...(bgBlur({ color: theme.palette.background.default }) as any),
   boxShadow: "none",
   backgroundColor: "transparent",
   textAlign: "center",
+  width: "100%",
+  [theme.breakpoints.only("xs")]: {
+    marginRight: "0px !important",
+  },
+  [theme.breakpoints.up("xs")]: {
+    marginRight: "12px !important",
+  },
 }));
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
@@ -36,12 +34,6 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
 
 export default function Header() {
   const navigate = useNavigate();
-
-  const handleChangeInput = (
-    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    console.log(event.target.value);
-  };
 
   return (
     <StyledRoot>
@@ -87,35 +79,13 @@ export default function Header() {
               Movies App
             </Typography>
           </Box>
-          <TextField
-            variant="outlined"
-            placeholder="Search movie"
-            sx={{
-              "& .MuiInputBase-root": {
-                backgroundColor: "rgba(255, 255, 255, 0.3)",
-                color: "white",
-              },
-            }}
-            size="small"
-            onChange={(e) => handleChangeInput(e)}
-            InputProps={{
-              startAdornment: (
-                <SearchIcon
-                  sx={{
-                    color: "white",
-                    marginLeft: "10px",
-                  }}
-                />
-              ),
-            }}
-          />
+
           <Button
             variant="contained"
-            sx={{
-              display: { xs: "none", sm: "none", md: "flex" },
-            }}
             onClick={() => navigate("/create-movie")}
-            startIcon={<LocalMoviesIcon />}
+            startIcon={
+              <img src="/assets/icons/movie-white.png" alt="title" width={24} />
+            }
           >
             <Typography>Add movie</Typography>
           </Button>
